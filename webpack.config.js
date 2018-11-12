@@ -24,12 +24,25 @@ module.exports = {
     rules: [
       {
         test: /\.tsx?$/,
+        exclude: /node_modules/,
         loader: 'ts-loader',
       },
       {
         test: /\.js$/,
-        include: /\/node_modules\//,
+        // include: /\/node_modules\//,
         loader: 'babel-loader',
+        options: {
+          presets: [
+            [
+              "@babel/preset-env",
+              {
+                "targets": {
+                  "browsers": ["ie 8"]
+                }
+              }
+            ]
+          ],
+        }
       }
     ],
   },
